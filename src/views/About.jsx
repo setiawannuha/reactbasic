@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 const About = () => {
   const [users, setUsers] = useState([])
   useEffect(() => {
@@ -11,9 +12,13 @@ const About = () => {
       console.log(err)
     })
   }, [])
+
+  const basic = useSelector((state) => state.basic)
+
   return (
     <div className="container text-center mt-5">
       <h1>About</h1>
+      {basic.count}
       <hr/>
       {
         users.map((item, i) => (
